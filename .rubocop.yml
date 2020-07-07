@@ -1,0 +1,3 @@
+Layout/EndOfLine:
+    Description: 'Warning regd spaces and endline'
+    Enabled: false
