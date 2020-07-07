@@ -1,0 +1,23 @@
+require 'rake/clean'
+require 'rake/packagetask'
+
+#linting test-kitchen
+task :lint do
+    sh "cookstyle -a"
+end
+
+#Archive lock file
+task :archive,[:verno]=>[:clean] do |t,args|
+    sh "powershell.exe Compress-Archive Policies/*.rb ApachePolicy-#{args.verno}.zip"
+end
+
+#deploy to artifactory
+task :deploy,[:usr,:pswd] do |t,args|
+    sh "jfrog rt c rt-server-1 --url=http://192.168.33.20:8082/artifactory --user=#{args.usr} --password=#{args.pswd}"
+    sh "jfrog rt u *.zip Policies"
+end
+
+#cleanup
+task :clean do
+    sh "powershell.exe Remove-Item *.zip"
+end
