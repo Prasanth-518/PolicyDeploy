@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage('clean'){
             steps{
-                powershell(script:"rake lint") 
+                powershell(script:"Remove-Item *.zip") 
             }
         }
         stage('lint'){
