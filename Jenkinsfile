@@ -9,7 +9,6 @@ pipeline{
         stage('clean'){
             steps{
                 powershell(script:"Remove-Item *.zip") 
-                powershell(script:"C:/Policies ; remove-item *.rb")
             }
         }
         stage('lint'){
