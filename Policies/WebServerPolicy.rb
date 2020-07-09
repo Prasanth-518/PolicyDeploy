@@ -10,7 +10,10 @@ name 'WebPolicy'
 default_source :supermarket, 'https://supermarket.chef.io'
 
 # run_list: chef-client will run these recipes in the order specified.
-run_list 'app_inf::webserver'
+run_list %w(
+    app_inf::webserver,
+    myServer::database
+)
 
 # Specify a custom source for a single cookbook:
 cookbook 'app_inf', '~> 0.5.0', :supermarket
