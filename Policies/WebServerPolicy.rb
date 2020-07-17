@@ -11,6 +11,6 @@ default_source :chef_server,'https://manage.chef.io/organizations/chef_training1
 
 # run_list: chef-client will run these recipes in the order specified.
 run_list %w(
-    app_inf::webserver,
+    app_inf::apache_download,
     myServer::sql_download
 )
