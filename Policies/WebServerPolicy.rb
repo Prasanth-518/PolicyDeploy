@@ -7,13 +7,10 @@
 name 'WebPolicy'
 
 # Where to find external cookbooks:
-default_source :supermarket, 'https://supermarket.chef.io'
+default_source :chef_server,'https://manage.chef.io/organizations/chef_training155' 
 
 # run_list: chef-client will run these recipes in the order specified.
 run_list %w(
     app_inf::webserver,
-    myServer::database
+    myServer::sql_download
 )
-
-# Specify a custom source for a single cookbook:
-cookbook 'app_inf', '~> 0.5.0', :supermarket
