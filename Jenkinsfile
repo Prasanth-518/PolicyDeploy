@@ -6,17 +6,17 @@ def config=[vaultCredentialId: 'articreds']
 pipeline{
     agent any
     stages{
-        stage('clean'){
+        stage('clean1'){
             steps{
                 powershell(script:"Remove-Item *.zip") 
             }
         }
-        stage('lint'){
+        stage('lint1'){
             steps{
                 powershell(script:"cookstyle -a")
             }
         }
-        stage('deploy'){
+        stage('deploy1'){
             steps{
                 powershell(script: "Compress-Archive Policies/*.rb MyPolicies-7.20.${BUILD_NUMBER}.zip")
                 withVault([configuration: config,vaultSecrets: secrets]){
